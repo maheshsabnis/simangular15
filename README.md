@@ -25,3 +25,101 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+npm install --global @angular/cli
+
+The 'ng' CLI to create
+ng new [NAME-OF-THE-APPLICATION]
+
+- Angular 15 Stable Features
+  - TypeScript 4.8 SUpport
+  - Node.js 14.x, 16.x, and 19.x
+  - Standalone Components
+    - Optimized Depednency Management
+    - Routing Improvizations
+    - Directive Decomposition *
+  - Image Improvization
+    - NgOptimizedImage
+  - Stack Trace in Browser improvized  
+  - RxJs
+    - 7.0+
+    - Improved Performance for Data Collection Received from REST API calls  
+
+# angular.json
+  - @angular-devkit
+    - Build Host for generating dev build for the application
+    - Generate JS files with all dependencies needed by the application
+    - all these dependencies will be loaded and executed in browser
+
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   2.04 MB | 
+styles.css, styles.js | styles        | 398.72 kB | 
+polyfills.js          | polyfills     | 314.27 kB | 
+main.js               | main          |  48.10 kB | 
+runtime.js            | runtime       |   6.52 kB | 
+
+                      | Initial Total |   2.79 MB
+
+vendor.js: Angular Object Model
+main.js : Application Code
+runtime.js: Borwser Host COde aka WebPack, this will take care of all depednencies required by app
+polyfills.js:  Managed by Zone.js, this will create execution context for JS files in  browser
+
+- FormsModule: Anguar module for
+  - Typed and UnTyped Forms (Angular 15)
+    - Map the DataTYpe of Properties with UI element for UI element Validation
+  - Databinging Attribute DFirectives 
+    - ngModel
+      - ngModelChanged Event
+        - Boiler-plate code that will be inyternally executed for each changed in UI elements as well as its property
+        - Thats why it is Two-Way Binding 
+- *ngFor, a Structural Directive which is used to generate DOM dunamically based on data passed to it
+
+# Analyze the Component
+  - Go ahead with Code Reusability
+    - Better create "Angular Service" for such re-usable Utility Code
+      - We can use this code across mutiple components
+  - Make sure that the repetative UI MUST be avoided, instead create a re-usable Component
+    - Create a Re-usable Component Directive(?)
+  - Directive
+    - Reusable
+      - UI
+        - Component Directive for UI Reusability
+          - Expose Properties those are responsible to Read/Write data
+          - Define @Input decorated properties
+            - These will be used for 'Property-Binding'
+            - [PROPERTY-NAME]="[VALUE-FROM-PARENT]"
+          - @Output decorated EventEmitter<T>
+            - Host an event in component
+            - The Hosted event is emitted from Child to the Parent
+            - This is used for EventBinding
+            - (EVENT-NAME)="[METHOD-FROM-PARENT]"
+              - EVENT-NAME is declared in child component using the EventEmitter  
+      - Attribute
+        - Custom HTML attribute with behavior (logic) as well as defining custom values for exisitng HTML element
+          - @Directive Decorator
+            - BAse TYpe for @Component Decorator
+            - Property
+              - selector
+            - When creating the Attribute Directive, the selector will be as follows
+              - select : '[SELECTOR-NAME]'
+          - Events in Directive
+            - These event are hosted by directive itself and they will be activated when the directive is applied on HTML element
+              - HostListener
+                - Listen an event on HTML element and activates the Directive
+              - Renderer2
+                - COnnect with DOM on browser to notify the new rendcering for HTML element after the Directive is activated   
+              - ElementRef
+                - A HTML element on which the Directive is applied
+              - Renderer2 and ElementRef Must be injected in Custom Directive class
+                - These two classes will be resolved by the 'BrowserModule'     
+             - Directive Composition
+              - USe Existing Directive inside the Custom Directive and directly apply in HTML element
+                - This will apply all directives at a time on HTML elemet
+                - This makes the HTML simple and readable            
+      - Structure Generator
+        - AKA Structural Directive to Add/Remove DOM dynamically
+          - *ngIf
+          - *ngFor
