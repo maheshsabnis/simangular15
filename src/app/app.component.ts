@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Categories, Manufacturers } from 'src/models/app.constants';
 import { ProductLogic } from 'src/models/app.product.logic';
 import { Product } from 'src/models/app.products.model';
+import { TableComponent } from './directives/componentsdirectives/app.table.component';
 import { StringUtilities } from './services/app.stringutil.service';
 
 @Component({
@@ -10,6 +11,14 @@ import { StringUtilities } from './services/app.stringutil.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit{
+
+// Will Make sure that the
+// Child Component will be
+// Changed/ Updated explicitly only when parent want to
+// change it
+// THis will not change for each update in parent component
+  @ViewChild(TableComponent) tableComponent:TableComponent;
+
     product: Product;
     products:Array<Product>;
     private logic: ProductLogic;
@@ -22,8 +31,8 @@ export class AppComponent  implements OnInit{
       this.logic = new ProductLogic();
       this.products = new Array<Product>();
       this.tableColumns = new Array<string>();
+      this.tableComponent = new TableComponent();
       console.log("Constructor Called");
-
     }
 
 // This will be invoked immediately after the COnstructor
@@ -36,6 +45,7 @@ export class AppComponent  implements OnInit{
       // generate table headers
       // Read all properties of Product class
       this.tableColumns = Object.keys(this.product);
+      this.tableComponent.DataSource = this.products;
     }
 
     clear():void {

@@ -5,7 +5,7 @@ import {bootstrapApplication} from '@angular/platform-browser';
 import { AppModule } from './app/app.module';
 import {ContainerComponent} from './app/standalonecomponents/app.container.component';
 
-bootstrapApplication(ContainerComponent);
+// bootstrapApplication(ContainerComponent);
 
-// platformBrowserDynamic().bootstrapModule(AppModule)
-//   .catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

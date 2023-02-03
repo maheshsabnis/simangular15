@@ -1,8 +1,8 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from "@angular/core";
 
 @Directive({
-  selector:'[setColor]',
-  standalone:true
+  selector:'[setColor]'//,
+  //standalone:true
 })
 export class ColorDirective {
   constructor(private element:ElementRef, private render:Renderer2){}

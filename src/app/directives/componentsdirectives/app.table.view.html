@@ -7,7 +7,7 @@
   <tbody>
     <tr *ngFor="let record of DataSource"
     (click)="onRowSelected(record)"
-      [setColor]="'red'"
+
     >
       <td *ngFor="let col of tableColumns">
          {{record[col]}}

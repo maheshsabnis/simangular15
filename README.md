@@ -123,3 +123,50 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
         - AKA Structural Directive to Add/Remove DOM dynamically
           - *ngIf
           - *ngFor
+
+# Angular Service
+- @Injectbale() decorator applied on the service class
+  - Make the class ready for registration DI Container
+  - ProvidedIn
+    - root
+      - All COmponents in Current Module
+      - All Components in Shared (Utilitiy/Feature) modules
+    - platform
+      - All COmponents in Current Module
+      - All components in Library Modules (aka External Module)
+    - any
+      - All Components in Current Module
+      - Lazy loaded modules
+- Utility Object that can be used for following
+  - Defining Re-Usable Logic that is needed by various components/directives across angular application
+    - Common required logic for data manipulation
+  - Defining global application state to share data across components
+    - Creating a Singleton object with mutability for the data that can be shared across components
+      - A object for storing data
+      - Notification Object for all subscribers to notify the data changes
+        - EventEmitter<T>
+          - T is the type of data maintaned in the Service object
+        - Subject<T>
+          - Object from RxJs
+          - Like EventEmitter
+          - Emits the lates value out-of-the-box to the subscribers  
+
+  - Defining the resource intensive logic that we cannot write into the component
+    - Async calls
+    - Observable Objects
+# RxJs
+- pipe()
+  - Creating a Constinuous stream of operations over the obserrvables
+- map()
+  - Updating Observables based on logic
+  - The return the same observable
+- filter
+  - process the observable based on conditions and generate new Observable
+- of()
+  - Craetes an observable based on collecgtion (Array)
+- forkJoin()
+  - USed to Perform Parallel Processing on multiple Observables
+- combineLatest()
+  - Combine Mumtiple Observables into a single Observable    
+
+

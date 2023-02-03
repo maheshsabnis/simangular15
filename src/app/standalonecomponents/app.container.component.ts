@@ -8,7 +8,7 @@ import { StringUtilities } from '../services/app.stringutil.service';
   selector: 'app-container-component',
   templateUrl: './app.container.view.html',
   providers:[StringUtilities],
-  imports:[ColorDirective]
+  //imports:[ColorDirective]
 })
 export class ContainerComponent implements OnInit {
   message:string;
