@@ -18,6 +18,8 @@ import { ListproductsComponent } from './routingapp/listproducts/listproducts.co
 import { CreateproductComponent } from './routingapp/createproduct/createproduct.component';
 import { EditproductComponent } from './routingapp/editproduct/editproduct.component';
 import { MainRoutingComponent } from './routingapp/app.mainrouting.component';
+import { SearchComponent } from './routingapp/search/search.component';
+import { SharedModule } from 'src/lib/app.shared.module';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { MainRoutingComponent } from './routingapp/app.mainrouting.component';
     RxJsSimpleComponent, ReactiveFormComponent,
     ListproductsComponent, CreateproductComponent,
     EditproductComponent,
-    MainRoutingComponent
+    MainRoutingComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule, HttpClientModule
+
   ],
   // Offers DI Container for Services
   providers: [StringUtilities],

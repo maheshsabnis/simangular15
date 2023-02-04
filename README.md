@@ -317,6 +317,10 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
     <router-outlet></router-outlet>
    ````                
       - component directive, that is injected with the View of the Component based on [routerLink] execution
+ - Lazy Loading for Libraries
+    - Loads Module and hence its components, directives, services, ect. on the fly using 
+      - RouterModule.forChild(LAZY-ROUTE-TABLE)
+      - The 'loadChildren' property of the Route class     
 # NGRX
 
 

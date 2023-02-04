@@ -14,6 +14,9 @@ import { Component, OnInit } from '@angular/core';
           <td>
              <a [routerLink]="['create']">Create New Product</a>
           </td>
+          <td>
+             <a [routerLink]="['lazy']">Lazy Module</a>
+          </td>
         </tr>
        </tbody>
      </table>
