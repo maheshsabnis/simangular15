@@ -236,6 +236,38 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
       - input element -- FormControlName --- FormControl --- Mapped with  AbstractControl  
         - Encapsulate all events and State Changes 
         -  AbstractControl encapsulate the 'COMPLETE HTML FORM' as a single Object and Read/Write its values   
+
+      - Dynamic Groups generated
+```` javascript
+
+      interface UserLoginForm {
+         userName: FormControl<string>;
+         password?: FormControl<string>; // nullable
+      }
+
+      const userLoginForm = new FormGroup<UserLoginForm>({
+        userName: new FormControl('', {nonNulable:true}),
+        password: new FormControl('', {nonNulable:true})
+      });
+
+
+
+    // Netsed FormGrom
+    const parentFormGroup = new FormGroup<Employee>({
+        empNo:new FormControl<string>(''),
+        empName:new FormControl(''),
+        address: new FormGroup<Address>({
+           flatNo:new FormControl(''),
+           societyName: new FormControl(''),
+           city: new FormControl()
+        }),
+....
+    });  
+
+
+````
+
+
 # Routing
 
 # NGRX
