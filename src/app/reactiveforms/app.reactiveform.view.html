@@ -1,0 +1,77 @@
+<h1>Angular Reactive Form</h1>
+<!-- [formGroup]: The Attribue Directive that map nitself with an
+  instace of FormGroup class-->
+<div class="container">
+   <form name="frmEmp" (ngSubmit)="save()"
+      [formGroup]="frmProduct">
+      <div class="form-group">
+        <label for="ProductId">Product Id</label>
+        <input type="text"  name="ProductId"
+          class="form-control"
+          formControlName="ProductId"
+          >
+         <div class="alert alert-danger"  *ngIf="frmProduct.controls['ProductId'].dirty&&!frmProduct.controls['ProductId'].valid">
+            <p *ngIf="frmProduct.controls['ProductId'].errors['required']">ProductId is required</p>
+            <p *ngIf="frmProduct.controls['ProductId'].errors['minlength']">ProductId must be minimum 3 digits in length</p>
+            <p *ngIf="frmProduct.controls['ProductId'].errors['maxlength']">ProductId can be max 8 digits in length</p>
+            <p *ngIf="frmProduct.controls['ProductId'].errors['pattern']">ProductId must numeric</p>
+         </div>
+      </div>
+      <div class="form-group">
+        <label for="ProductName">Product Name</label>
+        <input type="text"
+        formControlName="ProductName"
+        class="form-control"
+        name="ProductName">
+      </div>
+      <div class="form-group">
+        <label for="Manufacturer">Manufacturer Name</label>
+        <select    formControlName="Manufacturer"  class="form-control"
+        name="Manufacturer">
+         <option *ngFor="let man of manufacturers" value="{{man}}">{{man}}</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label for="Category">Category Name</label>
+        <select   formControlName="Category"   class="form-control"
+        name="Category" >
+         <option *ngFor="let cat of categories" value="{{cat}}">{{cat}}</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label for="Price">Price</label>
+        <input type="text"   formControlName="Price"   class="form-control"
+        name="Price"
+     >
+     <div class="alert alert-danger"  *ngIf="frmProduct.controls['Price'].dirty&&!frmProduct.controls['Price'].valid">
+      <p *ngIf="frmProduct.controls['Price'].errors['invalidPrice']">Price must be greater than 2000</p>
+   </div>
+      </div>
+      <div class="btn btn-group-lg">
+        <button class="btn btn-warning" (click)="clear()">New</button>
+
+         <input type="submit" class="btn btn-primary" value="Save"
+          [disabled]="!frmProduct.valid">
+      </div>
+   </form>
+   <br/>
+   {{product | json}}
+   <hr/>
+   <!-- <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th *ngFor="let header of tableColumns">{{header}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prd of products">
+            <td *ngFor="let col of tableColumns">
+               {{prd[col]}}
+            </td>
+          </tr>
+        </tbody>
+   </table> -->
+   <app-table-component [DataSource]="products"
+    (rowSelected)="onDataReceived($event)"
+    [CanDelete]="true"></app-table-component>
+</div>

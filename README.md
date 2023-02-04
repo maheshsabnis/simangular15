@@ -214,6 +214,28 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
             - minLength(number)
             - maxLength(number)
             - compose([Array of Validators]) 
+          - The Validator class has each method returning one of the following
+            - ValidationErrors
+              - Key : value pair object for Valid or Invalid value
+                - e.g.
+                  - valid:true | valid:false
+                  - invalid:true | invalid:false
+            - ValidatorFn
+              - Execute a static logic function to validate the value
+              - This function return ValidationErrors
+          - Valdiation Eveluation on HTML
+            - [FormGroup].controls['FORMCONTROLNAME'].dirty
+              - The UI element is changed
+            - [FormGroup].controls['FORMCONTROLNAME'].valid
+              - Check if the Value is valid against rules applied on FormGroup Instance in component
+            - [FormGroup].controls['FORMCONTROLNAME'].errors['ERROR-TYPE']
+              - errors: ValidationErrors
+              - ERROR-TYPE: the Error Condition e.g. required, pattwern, min, max, minlength, maxlength, custom   
+
+
+      - input element -- FormControlName --- FormControl --- Mapped with  AbstractControl  
+        - Encapsulate all events and State Changes 
+        -  AbstractControl encapsulate the 'COMPLETE HTML FORM' as a single Object and Read/Write its values   
 # Routing
 
 # NGRX
