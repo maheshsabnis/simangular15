@@ -169,4 +169,53 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
 - combineLatest()
   - Combine Mumtiple Observables into a single Observable    
 
+# Forms
+  - Template Forms
+    - NgForm mapped itself with form tag
+    - NgModel
+      - Handle Data Updates
+      - ngModelChanged Event
+        - Track the Form Changes
+        - UI Change -- The ngModelChanged -- Component's OnngChange -- Update the Component's Property -- OnChange will be completed -- check the UI binding with Property -- OnViewContent Update -- Update the View -- Render it
+     - NgModelGroup
+      - Manage the Maping of Data Properties with UI Elements inside the form
+        - Intrernally Create an instance of FormGroup to Bind the Properties with DOM Elements 
+    - Advantages
+      - They are simple
+      - Caliber of HTML Elements System to Manage the DOM ELements, and performing Data Validations
+        - required, pattern, min, max, minlegth, maxlength
+        - Apply thse attributes on HTML input Elements to validate the form     
+
+  - Reactive Forms  
+    - Approach with which Object's immutation feature is taken into consideration to update the state of the object whne its corresponding Form-Control aka UI Element is updated
+    - Internally manages the 'FormState'
+      - Build around the 'Observable' streams so that the Object's properties will be updated synchronously when the UI is chaged
+      - FormContol Bind with UI --- FormControlChanged --- Update the Model Property
+    - @angular/forms
+      - ReactiveFormsModule
+        - FormGroup
+          - Map with the ngForm that represents HTML Form tag
+          - Takes all editable elements inside the form tag as FormControlsCollection
+        - Each editable element is 'FormControl'
+          - FormControl is the Bridge between public property of the Model class an HTML UI Element    
+        - FormGroup and FormControl are deribed from 'AbstractControl' class that represents HTML UI Element
+          - The 'value' property to read value from HTML element that is bind with the FormGroup (form tag) and FormControl (input element)  
+          - The 'setValue()' method to assign data to HTML element
+        - formControlName the attribute directive that binds the FormControl instance with HTML element
+        - FormBuilder class to build the FormControls so that they can be used in FormGroup
+        - The 'Validators' class
+          - Class containing Static methods for Validations
+            - required(AbstractControl)
+            - requiredTrue(AbstractControl)
+            - email(AbstractControl)
+            - pattern(string | regex)
+            - min(number)
+            - max(number)
+            - minLength(number)
+            - maxLength(number)
+            - compose([Array of Validators]) 
+# Routing
+
+# NGRX
+
 

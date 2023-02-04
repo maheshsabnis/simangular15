@@ -1,11 +1,12 @@
 <h1>Hello Angular</h1>
-
+{{message}}
 <div class="container">
-   <form>
+   <form name="frmEmp" (ngSubmit)="save()">
       <div class="form-group">
         <label for="ProductId">Product Id</label>
         <input type="text" [(ngModel)]="product.ProductId" name="ProductId"
-          class="form-control">
+          class="form-control"
+           required="true">
       </div>
       <div class="form-group">
         <label for="ProductName">Product Name</label>
@@ -29,13 +30,19 @@
       <div class="form-group">
         <label for="Price">Price</label>
         <input type="text" [(ngModel)]="product.Price"  class="form-control"
-        name="Price">
+        name="Price"
+        minlength="4" maxlength="8">
+
       </div>
       <div class="btn btn-group-lg">
         <button class="btn btn-warning" (click)="clear()">New</button>
-        <button class="btn btn-primary" (click)="save()">Save</button>
+        <!-- <button class="btn btn-primary" (click)="save()">Save</button>
+         -->
+         <input type="submit" class="btn btn-primary" value="Save">
       </div>
    </form>
+   <br/>
+   {{product | json}}
    <hr/>
    <!-- <table class="table table-bordered table-striped">
         <thead>

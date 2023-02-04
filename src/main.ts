@@ -7,5 +7,7 @@ import {ContainerComponent} from './app/standalonecomponents/app.container.compo
 
 // bootstrapApplication(ContainerComponent);
 
+// platformBrowserDynamic: Manage the NG App Boostrapping in Broewser
+// The Default Page it will look as 'index.html'
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

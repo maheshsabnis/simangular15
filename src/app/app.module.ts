@@ -27,6 +27,6 @@ import { ContainerComponent } from './standalonecomponents/app.container.compone
   ],
   // Offers DI Container for Services
   providers: [StringUtilities],
-  bootstrap: [RxJsSimpleComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

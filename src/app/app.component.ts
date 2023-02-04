@@ -25,6 +25,7 @@ export class AppComponent  implements OnInit{
     manufacturers = Manufacturers;
     categories = Categories;
     tableColumns:Array<string>;
+    message:string;
     // Inject the service
     constructor(private serv: StringUtilities){
       this.product = new Product(0,'','','',0);
@@ -32,6 +33,7 @@ export class AppComponent  implements OnInit{
       this.products = new Array<Product>();
       this.tableColumns = new Array<string>();
       this.tableComponent = new TableComponent();
+      this.message = 'I am the Property';
       console.log("Constructor Called");
     }
 
