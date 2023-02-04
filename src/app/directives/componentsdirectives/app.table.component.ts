@@ -7,18 +7,27 @@ import { Component, Input, Output, EventEmitter, OnDestroy } from "@angular/core
 export class TableComponent implements OnDestroy {
   private _DataSource:Array<any>;
   tableColumns:Array<string>;
-
+  private _CanEdit:boolean;
   private _CanDelete:boolean;
 
   //<app-table-component (rowSelected)="[METHDO-FROM-PARENT]">
   @Output()
   rowSelected:EventEmitter<any>;
 
+  @Output()
+  editClicked:EventEmitter<any>;
+
+  @Output()
+  deleteClicked:EventEmitter<any>;
+
   constructor(){
     this._DataSource = new Array<any>();
     this.tableColumns = new Array<string>();
     this.rowSelected = new EventEmitter<any>();
+    this.editClicked = new EventEmitter<any>();
+    this.deleteClicked =new EventEmitter<any>();
     this._CanDelete = false;
+    this._CanEdit = false;
   }
 
   ngOnDestroy(): void {
@@ -47,9 +56,21 @@ export class TableComponent implements OnDestroy {
   get CanDelete():boolean {
     return this._CanDelete;
   }
+  @Input()
+  set CanEdit(val:boolean){
+    this._CanEdit = val;
+  }
 
+  get CanEdit():boolean {
+    return this._CanEdit;
+  }
 
-
+  onEditClicked(rec:any):void {
+    this.editClicked.emit(rec);
+  }
+  onDeleteClicked(rec:any):void {
+    this.deleteClicked.emit(rec);
+  }
 
   onRowSelected(rec:any):void {
     // Emit the value to the Subcriber

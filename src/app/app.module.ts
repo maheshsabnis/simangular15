@@ -14,13 +14,19 @@ import { RestClientComponent } from './restclientcomponents/app.restclient.compo
 import { RxJsSimpleComponent } from './rxjsops/app.rxjssimple.component';
 import { StringUtilities } from './services/app.stringutil.service';
 import { ContainerComponent } from './standalonecomponents/app.container.component';
+import { ListproductsComponent } from './routingapp/listproducts/listproducts.component';
+import { CreateproductComponent } from './routingapp/createproduct/createproduct.component';
+import { EditproductComponent } from './routingapp/editproduct/editproduct.component';
+import { MainRoutingComponent } from './routingapp/app.mainrouting.component';
 
 @NgModule({
   declarations: [
     AppComponent, TableComponent, ColorDirective,
     DeptComponent,  EmpComponent, RestClientComponent,
-    RxJsSimpleComponent, ReactiveFormComponent
-
+    RxJsSimpleComponent, ReactiveFormComponent,
+    ListproductsComponent, CreateproductComponent,
+    EditproductComponent,
+    MainRoutingComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
@@ -28,6 +34,6 @@ import { ContainerComponent } from './standalonecomponents/app.container.compone
   ],
   // Offers DI Container for Services
   providers: [StringUtilities],
-  bootstrap: [ReactiveFormComponent]
+  bootstrap: [MainRoutingComponent]
 })
 export class AppModule { }

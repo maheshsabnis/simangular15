@@ -269,7 +269,54 @@ polyfills.js:  Managed by Zone.js, this will create execution context for JS fil
 
 
 # Routing
+- SIngle Page Application (SPA) feature
+  -  @anguar/router
+    - RouterMododule
+      - Routes
+        - Route Table
+          - Each entry is 'Route' object
+      - Route
+        - path: URL
+        - component: Component to route
+        - redirectTo: redirect to default when 'path' does not match
+        - children
+          - Accepts 'Route' array as inout paraeter for child routing
+        - loadChildren
+          - lazy loading
+          - Load children routes asynchronously
+        - canActivate
+          - Guards based routing
+          - Accepts a Angular Service that is dealing with the Role based / User based route checks
+          - This requires the server side role based security 
 
+        - data
+          - values based on which guards will be executed           
+    - Router
+      - used for explict Routing
+      - provides method for executing routes
+        - the 'navigate(['path', route parameters,,,])'
+    - ActivatedRoute
+      - Used for Parameter based routing
+      - Subscribe to current route url and read parameter
+    - CanActivate , used in case of Route Guards
+      - Interface
+        - the 'canActivate(ActivatedRouteSnapshot, RouterStateSnapshot)' metod
+          - ActivatedRouteSnapshot: Varify the current route in route table created using 'Routes'
+          - RouterStateSnapshot
+            - Define a 'state' for routing
+              - the user / role based on which the route path will be executed   
+            - Process the routing based on 'data' required for route guards so that based in user/role the routing will be executed    
+  -  Route Guard dependencies
+    - BehaviorSubject<T> class is required 
+      -  create an 'observer' to read the user/roles received from REST API (server) based on which the Guarded Routing will be executed   
+  - The [routerLink], the atribute directive for quering to Route Table based on 'path' expression passed to the directive
+    - e.g.
+      - [routerLink]=['PATH-EXPRESSION-DEFINED-IN-ROUTE']
+   - The 
+   ```` html
+    <router-outlet></router-outlet>
+   ````                
+      - component directive, that is injected with the View of the Component based on [routerLink] execution
 # NGRX
 
 

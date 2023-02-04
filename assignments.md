@@ -9,3 +9,6 @@
     - Electrical > 50
     - Food > 20
     - Fashion > 400 
+4. Modify the ROuting App by adding New Route for 'delete' abd adding the 'DeleteComponent'
+  - This component will have the data shown in read-only format with a 'Delete' button
+  - When this button is clicked record must be deleted     

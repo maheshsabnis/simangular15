@@ -1,0 +1,9 @@
+<h3>List of Products</h3>
+<app-table-component [DataSource]="products"
+ [CanEdit]="true"
+ [CanDelete]="true"
+ (editClicked)="navigateToEdit($event)"></app-table-component>
+<hr/>
+<span>
+  <strong>{{statusMessage}}</strong>
+</span>

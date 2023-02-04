@@ -12,9 +12,16 @@
       <td *ngFor="let col of tableColumns">
          {{record[col]}}
       </td>
-      <td *ngIf="CanDelete">
-        <button class="btn btn-danger">Delete</button>
+      <td *ngIf="CanEdit">
+        <button class="btn btn-warning"
+         (click)="onEditClicked(record)">Edit</button>
       </td>
+      <td *ngIf="CanDelete">
+        <button class="btn btn-danger"
+        (click)="onDeleteClicked(record)"
+        >Delete</button>
+      </td>
+
     </tr>
   </tbody>
 </table>
